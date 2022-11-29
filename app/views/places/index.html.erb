@@ -1,0 +1,29 @@
+<% if current_user.admin?%>
+
+<h1>Places</h1>
+
+<%= link_to "New place", new_place_path,class:"btn btn-primary mt-3 p-3" %>
+
+<div class="form-group pull-right">
+    <input type="text" class="search mt-3 mb-3" placeholder="Search place here">
+</div>
+<table class="table table-striped table-bordered results" >
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Place Name</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <div id="places">
+      <% @places.each do |place| %>
+        <%= render place %>
+      <% end %>
+    </div>
+  </tbody>
+</table>
+
+
+<%= link_to 'Back to Schedules', schedules_path,class:"btn btn-app mt-3"%>
+
+<% end %>

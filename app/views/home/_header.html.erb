@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);">
+  <div class="container-fluid">  
+    <%= link_to '🚅 Dashboard', root_path, class:"navbar-brand m-0 h1",style:"font-size:2.2rem;color:d8e0eb;font-style:italic;font-weight:bold;" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      
+      <% if user_signed_in? %>
+      <% if current_user.admin?%>
+      <li class="nav-item">
+        <%= link_to 'Trains', trains_path, class:"nav-link m-1",style:"font-size:1.5rem;color:d8e0eb"%>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Schedules', schedules_path, class:"nav-link m-1",style:"font-size:1.5rem;color:d8e0eb" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'View Passenger Log', passenger_log_path, class:"nav-link m-1",style:"font-size:1.5rem;color:d8e0eb" %>
+      </li>
+
+      <% end %>
+      <% if current_user.admin? || current_user.user? %>
+      <li class="nav-item">
+        <%= link_to 'Book Tickets', schedules_path, class:"nav-link m-1",style:"font-size:1.5rem;color:d8e0eb" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Ticket History', tickets_path, class:"nav-link m-1",style:"font-size:1.5rem;color:d8e0eb" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Payment History', payments_path, class:"nav-link m-1",style:"font-size:1.5rem;color:d8e0eb" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Edit profile', edit_user_registration_path, class:"nav-link m-1",style:"font-size:1.5rem;color:d8e0eb" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Sign-out', destroy_user_session_path, method: :delete, class:"nav-link m-1",style:"font-size:1.5rem;color:d8e0eb" %>
+      </li>
+      <%end%>
+      <% else %>
+      <li class="nav-item">
+        <%= link_to 'Sign-In', new_user_session_path, class:"nav-link m-1",style:"font-size:1.5rem;color:d8e0eb"%>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Sign-up', new_user_registration_path, class:"nav-link m-1",style:"font-size:1.5rem;color:d8e0eb" %>
+      </li>
+      <% end %>
+    </ul>
+    <%# <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> %>
+  </div>
+  </div>
+</nav>

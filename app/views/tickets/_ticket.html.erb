@@ -1,0 +1,46 @@
+<tr id="<%= dom_id ticket %>">
+  <td>
+    <% @user_object = User.find(ticket.user_id)%>
+    <%= @user_object.first_name + " " + @user_object.last_name %>
+  </td>
+  <td>
+    <% @t_t_object = Train.find(ticket.train_id)%>
+    <%= @t_t_object.train_name %>
+  </td>
+  <td>
+    <% @t_s_object = Schedule.find(ticket.schedule_id)
+       @t_s_p_object = Place.find(@t_s_object.src_place_id)
+       @t_d_p_object = Place.find(@t_s_object.dst_place_id)%>
+    <%= @t_s_p_object.name %>
+  </td>
+  <td>
+    <%= @t_d_p_object.name %>
+  </td>
+  <td>
+    <%= @t_s_object.starting_time %>
+  </td>
+  <td>
+    <%= @t_s_object.reaching_time %>
+  </td>
+  <td>
+    <%= @t_s_object.tour_fare %>
+  </td>
+  <td>
+    <%= ticket.no_of_people %>
+  </td>
+  <td>
+    <%= @t_s_object.tour_fare*ticket.no_of_people %>
+  </td>
+  <td>
+    <%= ticket.created_at %>
+  </td>
+  <td>
+    <%= ticket.payment_id %>
+  </td>
+  <td>
+        <%= link_to "Show this ticket", ticket,class:"btn btn-app mt-3" %>
+  </td>
+</tr>
+<tr class="warning no-result">
+      <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+</tr>

@@ -1,0 +1,22 @@
+<% if current_user.admin?%>
+<table class="table table-striped" >
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Train Id </th>
+      <th scope="col">Train Name</th>
+      <th scope="col">Passenger capacity</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @train %>
+  </tbody>
+</table>
+
+<div>
+  <%= link_to "Edit this train", edit_train_path(@train),class:"btn btn-app mt-3" %>
+  <%= link_to "Back to trains", trains_path,class:"btn btn-app mt-3" %>
+
+  <%= button_to "Delete this train", @train, method: :delete, data: {confirm: 'Are you Sure?'},class:"btn btn-danger mt-3" %>
+</div>
+<% end %>

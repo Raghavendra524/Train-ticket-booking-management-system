@@ -1,0 +1,70 @@
+<%= form_with(model: ticket) do |form| %>
+  <% if ticket.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+
+      <ul>
+        <% ticket.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="font-size:1.2rem;" class="mb-2 mt-1">
+    <%= form.label "train name : " %>
+    <%= @fortrain.train_name  %>
+  </div>
+
+  <div style="font-size:1.2rem;" class="mb-2 mt-1">
+    <%= form.label "starting place : " %>
+    <%= @startplace.name %>
+  </div>
+
+  <div style="font-size:1.2rem;" class="mb-2 mt-1">
+    <%= form.label "destination place:" %>
+    <%= @endplace.name %>
+  </div>
+
+  <div style="font-size:1.2rem;" class="mb-2 mt-1">
+    <%= form.label "starting time:" %>
+    <%= @forschedule.starting_time  %>
+  </div>
+
+  <div style="font-size:1.2rem;" class="mb-2 mt-1">
+    <%= form.label "destination time:" %>
+    <%= @forschedule.reaching_time %>
+  </div>
+  
+  <div style="font-size:1.2rem;" class="mb-2 mt-1">
+    <%= form.label "tour fare:" %>
+    <%= @forschedule.tour_fare %>
+  </div>
+
+  <div style="font-size:1.2rem;" class="mb-2 mt-1">
+    <%= form.label :no_of_people, style: "display: block" %>
+    <% @noofppl = 1 %>
+    <%= form.number_field :no_of_people,id: :no_of_people_ticket_book, value: @noofppl, min: 0 , max: 15 %>
+  </div>
+
+  <div>
+    <%= form.number_field :user_id, id: :ticket_user_id, value:current_user.id,type: :hidden  %>
+  </div>
+
+  <div>
+    <%= form.number_field :schedule_id, id: :ticket_schedule_id, value:@s_id,type: :hidden  %>
+  </div>
+  
+  <div>
+    <%= form.number_field :train_id, id: :ticket_train_id, value:@t_id,type: :hidden  %>
+  </div>
+  
+  <div>
+    <%= form.label :total_amount, style: "display: none" %>
+    <%= form.number_field :total_amount, type: :hidden  %>
+  </div>
+
+  <div>
+    <%= form.submit "Book",class:"btn btn-app mt-3" %>
+  </div>
+<% end %>

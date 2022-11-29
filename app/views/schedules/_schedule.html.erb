@@ -1,0 +1,40 @@
+<tr id="<%= dom_id schedule %>">
+  <td>
+    <%= schedule.id %>
+  </td>
+  <td>
+    <% @schtrain = Train.find(schedule.train_id)%>
+    <%= @schtrain.train_name %>
+  </td>
+  <td>
+    <% @startplace = Place.find(schedule.src_place_id)%>
+    <%= @startplace.name %>
+  </td>
+  <td>
+    <% @endplace = Place.find(schedule.dst_place_id)%>
+    <%= @endplace.name %>
+  </td>
+  <td>
+    <%= schedule.starting_time %>
+  </td>
+  <td>
+    <%= schedule.reaching_time %>
+  </td>
+  <td>
+    <%= schedule.tour_fare %>
+  </td>
+  <td>
+    <%= @schtrain.train_capacity - schedule.pass_count %>
+  </td>
+  <td>
+    <%= link_to "book ticket", new_ticket_path(:data => schedule.id),class:"btn btn-app mt-3" %>
+  </td>
+  <td>
+    <%if current_user.admin?%>
+      <%= link_to "Show this schedule", schedule,class:"btn btn-app mt-3" %>
+    <% end %>
+  </td>
+</tr>
+<tr class="warning no-result">
+      <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+</tr>

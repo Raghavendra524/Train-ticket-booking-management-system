@@ -1,0 +1,31 @@
+
+<table class="table table-striped" >
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">User Name </th>
+      <th scope="col">Train Name </th>
+      <th scope="col">Starting Place</th>
+      <th scope="col">destination place</th>
+      <th scope="col">Starting time</th>
+      <th scope="col">reaching time</th>
+      <th scope="col">Tour fare for single ticket</th>
+      <th scope="col">No of People</th>
+      <th scope="col">Total amout</th>
+      <th scope="col">booking time</th>
+      <th scope="col">Payment Id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @ticket %>
+  </tbody>
+</table>
+
+
+<div>
+  <%# <%= link_to "Edit this ticket", edit_ticket_path(@ticket) % > %>
+  <%= link_to "Back to tickets", tickets_path,class:"btn btn-app mt-3" %>
+  <%= link_to 'Back to Schedules', schedules_path,class:"btn btn-app mt-3" %>
+
+
+  <%= button_to "cancel this ticket", @ticket, method: :delete, data: {confirm: 'Are you Sure?'},class:"btn btn-danger mt-3" %>
+</div>

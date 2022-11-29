@@ -1,0 +1,27 @@
+<table class="table table-striped table-bordered results" >
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Schedule Id </th>
+      <th scope="col">Train Name</th>
+      <th scope="col">Starting Location</th>
+      <th scope="col">Destination Location</th>
+      <th scope="col">Starting time</th>
+      <th scope="col">Reaching time</th>
+      <th scope="col">Total Fare</th>
+      <th scope="col">Passenger capacity</th>
+      <th scope="col">Action 1</th>
+      <th scope="col">Action 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @schedule %>
+  </tbody>
+</table>
+
+<div>
+  <%= link_to "Back to schedules", schedules_path,class:"btn btn-app mt-3" %>
+<% if current_user.admin?%>
+  <%= link_to "Edit this schedule", edit_schedule_path(@schedule),class:"btn btn-app mt-3" %>
+  <%= button_to "delete this schedule", @schedule, method: :delete , data: {confirm: 'Are you Sure?'},class:"btn btn-danger mt-3"%>
+<% end %>
+</div>

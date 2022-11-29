@@ -1,0 +1,59 @@
+<%= form_with(model: schedule) do |form| %>
+  <% if schedule.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
+
+      <ul>
+        <% schedule.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :"for Train", style: "display: block" %>
+    <% @trains = Train.all%>
+    <%= form.select(:train_id,@trains.map{|t| [t.train_name,t.id]} ) %>
+
+  </div>
+
+  <div>
+  <%= link_to 'add places', new_place_path,class:"btn btn-app mt-3 mb-3" %>
+  </div>
+  <div>
+    <%= form.label :"Staring Place", style: "display: block" %>
+    <% @places = Place.all%>
+    <%= form.select(:src_place_id,@places.map{|p| [p.name,p.id]} ) %>
+
+  </div>
+  <div>
+    <%= form.label :"destination place", style: "display: block" %>
+    <%= form.select(:dst_place_id,@places.map{|p| [p.name,p.id]} ) %>
+
+  </div>
+
+  <div>
+    <%= form.label :starting_time, style: "display: block" %>
+    <%= form.datetime_field :starting_time %>
+  </div>
+
+  <div>
+    <%= form.label :reaching_time, style: "display: block" %>
+    <%= form.datetime_field :reaching_time %>
+  </div>
+
+  <div>
+    <%= form.label :tour_fare, style: "display: block" %>
+    <%= form.number_field :tour_fare %>
+  </div>
+  
+  <div>
+    <%= form.number_field :user_id, id: :schedule_user_id, value:current_user.id,type: :hidden %>
+  </div>
+
+
+  <div>
+    <%= form.submit "Add Schedule",class:"btn btn-app mt-3" %>
+  </div>
+<% end %>

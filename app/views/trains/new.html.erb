@@ -1,0 +1,12 @@
+<% if current_user.admin?%>
+
+<h1>New train</h1>
+
+<%= render "form", train: @train %>
+
+<br>
+
+<div>
+  <%= link_to "Back to trains", trains_path,class:"btn btn-app mt-3" %>
+</div>
+<% end %>

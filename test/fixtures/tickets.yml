@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  t_id: 1
+  no_of_people: 1
+  total_amount: 1
+  g_time: 2022-11-20 03:33:35
+  sch_id: 1
+  u_id: 1
+
+two:
+  t_id: 1
+  no_of_people: 1
+  total_amount: 1
+  g_time: 2022-11-20 03:33:35
+  sch_id: 1
+  u_id: 1

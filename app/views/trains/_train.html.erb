@@ -1,0 +1,17 @@
+<tr id="<%= dom_id train %>">
+  <td>
+    <%= train.id %>
+  </td>
+  <td>
+    <%= train.train_name %>
+  </td>
+  <td>
+    <%= train.train_capacity %>
+  </td>
+  <td>
+      <%= link_to "Show this train", train,class:"btn btn-app mt-3" %>
+  </td>
+</tr>
+<tr class="warning no-result">
+      <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+</tr>
